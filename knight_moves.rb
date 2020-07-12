@@ -58,8 +58,21 @@ class KnightMoves
       final_route.unshift([current_parent.x_coord, current_parent.y_coord])
       current_parent = current_parent.parent
     end
-    puts "Total of #{final_route.length - 1} moves required. Here's the path taken:"
-    p final_route
+    puts "\nTotal of #{final_route.length - 1} moves required. Here's the path taken:"
+    puts clean_route_print(final_route)
+    puts "\n"
+  end
+
+  private
+
+  def clean_route_print(route)
+    # Accepts an array of coords, and returns a formatted route
+    route_str = ""
+    until route.empty?
+      route_str += "#{route.shift}"
+      route_str += " --> " unless route.size == 0
+    end
+    route_str
   end
 
 end
